@@ -1,19 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {DataGrid} from "@material-ui/data-grid";
-import {setPosts} from '../../redux/actions/post'
+import {setPosts, getPosts} from '../../redux/actions/post'
+import {Link} from "react-router-dom";
 
 const columns = [
     {field: 'id', headerName: 'ID', width: 70},
     {field: 'title', headerName: 'Title', width: 130},
+    {
+        field: '', headerName: 'Action', width: 130,
+        renderCell: params => <Link to={`/post/${params.row.id}`}>View</Link>
+    },
 ];
 
 class Posts extends React.Component {
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(data => this.props.setItems(data))
+        this.props.getItems()
     }
 
     render() {
@@ -34,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setItems: data => dispatch(setPosts(data))
+        setItems: data => dispatch(setPosts(data)),
+        getItems: () => dispatch(getPosts())
     }
 }
 

@@ -5,3 +5,10 @@ export function setPersons(payload) {
         payload
     }
 }
+
+export function setPerson(payload) {
+    return {
+        type: 'PERSON',
+        payload
+    }
+}

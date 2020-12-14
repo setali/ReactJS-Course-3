@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {DataGrid} from '@material-ui/data-grid';
 import {setPersons} from '../../redux/actions/person'
@@ -7,6 +8,10 @@ const columns = [
     {field: 'id', headerName: 'ID', width: 70},
     {field: 'name', headerName: 'Name', width: 130},
     {field: 'username', headerName: 'Username', width: 130},
+    {
+        field: '', headerName: 'Action', width: 130,
+        renderCell: params => <Link to={`/person/${params.row.id}`}>View</Link>
+    },
 ];
 
 class List extends React.Component {
@@ -22,12 +27,13 @@ class List extends React.Component {
         // .then(data => this.props.dispatch({ type: 'PERSONS', payload: data}))
     }
 
+
     render() {
         console.log('Props', this.props);
 
         return (
             <div style={{height: 400, width: '100%'}}>
-                <DataGrid rows={this.props.data} columns={columns} pageSize={10} checkboxSelection/>
+                <DataGrid rows={this.props.data} columns={columns} pageSize={10}/>
             </div>
         );
     }

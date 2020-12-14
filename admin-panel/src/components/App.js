@@ -7,8 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Sidebar from "./generic/Sidebar";
 import Dashboard from "./generic/Dashboard";
-import PersonList from "./person/List";
-import PostList from "./post/List";
+import Person from "./person/Router";
+import Post from "./post/Router";
 
 const drawerWidth = 240;
 
@@ -44,8 +44,8 @@ export default function PermanentDrawerRight() {
                 <div className={classes.toolbar} />
                 <Switch>
                     <Route exact path={"/"} component={Dashboard}/>
-                    <Route exact path={"/person"} component={PersonList}/>
-                    <Route exact path={"/post"} component={PostList}/>
+                    <Route exact path={"/person*"} component={Person}/>
+                    <Route exact path={"/post*"} component={Post}/>
                 </Switch>
             </main>
             <Sidebar/>

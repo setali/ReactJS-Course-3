@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<script src="index.js"></script>-->
+
+<script>
+
+
+  function prom(name, time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => { resolve(name) }, time)
+    })
+  }
+
+  // prom('ali', 1000).then(name => console.log(name))
+  // prom('eli', 1000).then(name => console.log(name))
+  // prom('mahtab', 1000).then(name => console.log(name))
+
+  async function func() {
+    try {
+      const name1 = await prom('ali', 1000)
+      console.log(name1)
+    }
+    catch (e) {
+      console.log(e)
+    }
+
+    const name2 = await prom('eli', 1000).catch(err => console.log(err))
+    console.log(name2)
+    const name3 = await prom('mahtab', 1000)
+    console.log(name3)
+  }
+
+  func()
+
+
+  // function prom (name, time) {
+  //   console.log('SALAM')
+  //   return new Promise((resolve, reject) => {
+  //     if (!name) {
+  //       reject('Name not be empty')
+  //     } else {
+  //       setTimeout(() => {
+  //         resolve(name)
+  //       }, time)
+  //     }
+  //   })
+  // }
+  //
+  // prom('HASAN')
+  //   // .then((resolvedData) => { console.log(resolvedData)})
+  //   .then(() => 'ali')
+  //   .then(name => console.log(name))
+  //   .catch(err => console.log(err))
+  //   .finally(() => console.log('Finally'))
+
+
+</script>
+
+</body>
+</html>

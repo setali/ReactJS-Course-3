@@ -25,6 +25,20 @@ export default function Menu () {
             </a>
           </Link>
         </li>
+        <li>
+          <Link href={"/post"}>
+            <a>
+              Post
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href={"/user"}>
+            <a>
+              User
+            </a>
+          </Link>
+        </li>
       </ul>
     </menu>
   )

@@ -6,37 +6,50 @@
 </head>
 <body>
 
-<!--<script src="index.js"></script>-->
+<script src="index.js"></script>
 
 <script>
 
 
-  function prom(name, time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => { resolve(name) }, time)
-    })
+  try {
+    // console.log(hasan)
+    slideshow()
   }
+  catch (err) {
+    console.log(err.message, err.name)
+  }
+  finally {
+    console.log('Hello')
+  }
+
+  console.log('salam')
+
+  // function prom(name, time) {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => { resolve(name) }, time)
+  //   })
+  // }
 
   // prom('ali', 1000).then(name => console.log(name))
   // prom('eli', 1000).then(name => console.log(name))
   // prom('mahtab', 1000).then(name => console.log(name))
 
-  async function func() {
-    try {
-      const name1 = await prom('ali', 1000)
-      console.log(name1)
-    }
-    catch (e) {
-      console.log(e)
-    }
-
-    const name2 = await prom('eli', 1000).catch(err => console.log(err))
-    console.log(name2)
-    const name3 = await prom('mahtab', 1000)
-    console.log(name3)
-  }
-
-  func()
+  // async function func() {
+  //   try {
+  //     const name1 = await prom('ali', 1000)
+  //     console.log(name1)
+  //   }
+  //   catch (e) {
+  //     console.log(e)
+  //   }
+  //
+  //   const name2 = await prom('eli', 1000).catch(err => console.log(err))
+  //   console.log(name2)
+  //   const name3 = await prom('mahtab', 1000)
+  //   console.log(name3)
+  // }
+  //
+  // func()
 
 
   // function prom (name, time) {

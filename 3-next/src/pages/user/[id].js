@@ -1,7 +1,13 @@
 import axios from 'axios'
 import Link from 'next/link'
+import Error from '../_error'
 
-export default function User ({user = {}}) {
+export default function User ({user = {}, statusCode}) {
+
+  if (statusCode) {
+    return <Error statusCode={statusCode}/>
+  }
+
 
   return (
     <div>
@@ -33,19 +39,26 @@ export async function getStaticPaths(context) {
 
   return {
     paths,
-    fallback: true
+    fallback: false
   }
 }
 
 export async function getStaticProps ({params: {id}}) {
 
-  const {data: user} = await axios(`https://jsonplaceholder.typicode.com/users/${id}`)
+  let user = {}, statusCode = false
 
-  console.log(user.id)
+  try {
+    const response = await axios(`https://jsonplaceholder.typicode.com/users/${id}`)
+    user = response?.data
+  }
+  catch (err) {
+    statusCode = err.response.status
+  }
 
   return {
     props: {
-      user
+      user,
+      statusCode
     },
     revalidate: 3
   }

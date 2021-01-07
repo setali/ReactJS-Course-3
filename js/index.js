@@ -1,19 +1,37 @@
 
 
-
-
-function slideshow(slides) {
-
-  if (!slides) {
-    throw SyntaxError('Slides must be an array')
-  }
-
-  console.log('Hi')
-  // ...
-  // ...
-  // ...
-  // ...
+function* getNumber() {
+  yield 1
+  yield 2
+  yield 3
+  yield 4
 }
+
+const generator = getNumber()
+
+for (let number of generator) {
+  console.log(number)
+}
+
+
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+// console.log(generator.next())
+
+// function slideshow(slides) {
+//
+//   if (!slides) {
+//     throw SyntaxError('Slides must be an array')
+//   }
+//
+//   console.log('Hi')
+//   // ...
+//   // ...
+//   // ...
+//   // ...
+// }
 
 
 // function request (url, method = 'GET') {
